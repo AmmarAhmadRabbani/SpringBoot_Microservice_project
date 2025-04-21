@@ -1,0 +1,10 @@
+logging.level.org.springframework.data.mongodb.core.MongoTemplate=DEBUG
+
+spring:
+  application:
+    name: order-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: microservice_order

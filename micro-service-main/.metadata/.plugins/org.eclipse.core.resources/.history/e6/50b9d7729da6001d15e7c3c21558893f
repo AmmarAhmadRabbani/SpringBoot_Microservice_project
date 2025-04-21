@@ -1,0 +1,13 @@
+MONGODB:
+
+server:
+  port: 8083
+
+spring:
+  application:
+    name: rating-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: microservice_order

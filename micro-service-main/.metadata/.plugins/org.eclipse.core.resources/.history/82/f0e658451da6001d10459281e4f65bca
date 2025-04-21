@@ -1,0 +1,9 @@
+package com.te.productservice.service;
+
+import com.te.feignclient.dto.ProductDTO;
+
+public interface ProductService {
+
+	String saveProduct(ProductDTO productDTO);
+
+}

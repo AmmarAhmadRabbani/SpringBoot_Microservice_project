@@ -1,0 +1,32 @@
+package com.te.customerservices.service;
+
+import java.util.UUID;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
+import com.te.customerservices.entity.Customer;
+import com.te.customerservices.repository.CustomerRepository;
+import com.te.feignclient.dto.CustomerDTO;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class CustomerServiceImpl implements CustomerService {
+
+	public final CustomerRepository customerRepository;
+
+	@Override
+	public String saveCustomer(CustomerDTO customerDTO) {
+		return customerRepository.save(Customer.builder().customerId(UUID.randomUUID().toString())
+				.customerName(customerDTO.getCustomerName()).customerEmail(customerDTO.getCustomerEmail()).build())
+				.getCustomerId();
+	}
+
+	@Override
+	public CustomerDTO getCustomer(String customerId) {
+		return customerDTO;
+	}
+
+}

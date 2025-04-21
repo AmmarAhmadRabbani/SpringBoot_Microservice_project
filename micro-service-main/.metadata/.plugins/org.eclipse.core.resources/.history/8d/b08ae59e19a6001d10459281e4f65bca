@@ -1,0 +1,5 @@
+package com.te.productservice.controller;
+
+public class ProductController {
+
+}

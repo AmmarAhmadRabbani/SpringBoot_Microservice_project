@@ -1,0 +1,20 @@
+package com.te.orderservice.service.external;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.te.feignclient.dto.ProductDTO;
+import com.te.feignclient.response.SuccessResponse;
+
+@FeignClient(name="product-service")
+public interface ProductService {
+
+	@GetMapping("/product/{productId}")
+	public SuccessResponse<ProductDTO> getProduct(@PathVariable String productId);
+	
+	@PutMapping("/product/{productId}")	
+	public SuccessResponse<ProductDTO> reduceQuantity(@PathVariable String productId,@RequestParam int quantity);
+}

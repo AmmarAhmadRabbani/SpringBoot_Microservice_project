@@ -1,0 +1,5 @@
+package com.te.orderservice.exception;
+
+public class OrderIdNotFoundException {
+
+}

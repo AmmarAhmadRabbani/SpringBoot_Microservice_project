@@ -1,0 +1,5 @@
+package com.te.feignclient.dto;
+
+public class ProductDTO {
+
+}

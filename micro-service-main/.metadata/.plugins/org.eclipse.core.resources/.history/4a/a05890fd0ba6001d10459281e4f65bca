@@ -1,0 +1,16 @@
+package com.te.customerservices.service;
+
+import org.springframework.stereotype.Service;
+
+import com.te.feignclient.dto.CustomerDTO;
+
+@Service
+public class CustomerServiceImpl implements CustomerService {
+
+	@Override
+	public String saveCustomer(CustomerDTO customerDTO) {
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.te.customerservices.exception.handler;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import com.te.customerservices.exception.CustomerNotFoundException;
+import com.te.feignclient.response.ErrorResponse;
+
+@RestControllerAdvice
+public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+
+	@ExceptionHandler({
+		CustomerNotFoundException.classs
+	})
+	public ErrorResponse handler() {
+		return ErrorResponse.builder()
+				.error(PAGE_NOT_FOUND_LOG_CATEGORY)
+				.build();
+	}
+}

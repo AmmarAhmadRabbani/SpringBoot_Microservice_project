@@ -1,0 +1,9 @@
+package com.te.customerservices.service;
+
+import com.te.feignclient.dto.CustomerDTO;
+
+public interface CustomerService {
+
+	String saveCustomer(CustomerDTO customerDTO);
+
+}

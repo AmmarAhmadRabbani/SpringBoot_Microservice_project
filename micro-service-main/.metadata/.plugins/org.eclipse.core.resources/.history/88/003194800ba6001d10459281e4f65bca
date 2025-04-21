@@ -1,0 +1,5 @@
+package com.te.customerservices.repository;
+
+public class CustomerRepository {
+
+}

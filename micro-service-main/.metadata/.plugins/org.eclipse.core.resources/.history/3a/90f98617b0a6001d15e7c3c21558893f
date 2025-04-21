@@ -1,0 +1,49 @@
+package com.te.orderservice.service;
+
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
+import com.te.feignclient.dto.OrderDTO;
+import com.te.orderservice.entity.Order;
+import com.te.orderservice.exception.OrderIdNotFoundException;
+import com.te.orderservice.repository.OrderRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class OrderServiceImpl implements OrderService {
+
+	private final OrderRepository orderRepository;
+
+	@Override
+	public String saveOrder(OrderDTO orderDTO) {
+		return orderRepository.save(Order.builder()
+				.orderQuantity(orderDTO.getOrderQuantity())
+				.orderAmount(orderDTO.getOrderAmount())
+				.build()).getOrderId();
+	}
+
+	@Override
+	public OrderDTO getOrder(String orderId) {
+		return orderRepository.findById(orderId).map(order->{
+			OrderDTO orderDTO = new OrderDTO();
+			BeanUtils.copyProperties(order, orderDTO);
+			return orderDTO;
+		}).orElseThrow(()-> new OrderIdNotFoundException("Order Id not found"));
+	}
+
+	@Override
+	public List<OrderDTO> getOrders() {
+		return orderRepository.findAll().stream().map(order->{
+			OrderDTO orderDTO = new OrderDTO();
+			BeanUtils.copyProperties(order, orderDTO);
+			return orderDTO;
+		}).collect(Collectors.toList());
+	}
+
+}

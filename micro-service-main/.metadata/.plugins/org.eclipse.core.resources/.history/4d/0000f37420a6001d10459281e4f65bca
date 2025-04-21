@@ -1,0 +1,5 @@
+package com.te.orderservice.entity;
+
+public class Order {
+
+}

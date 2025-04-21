@@ -1,0 +1,10 @@
+package com.te.customerservices.entity;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Customer {
+	private String customerId;
+	private String customerName;
+	private String customerEmail;
+}

@@ -1,0 +1,25 @@
+package com.te.orderservice.service;
+
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import com.te.feignclient.dto.OrderDTO;
+import com.te.orderservice.entity.Order;
+import com.te.orderservice.repository.OrderRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class OrderServiceImpl implements OrderService {
+
+	private final OrderRepository orderRepository;
+
+	@Override
+	public String saveOrder(OrderDTO orderDTO) {
+		return orderRepository.save(Order.builder().orderId(UUID.randomUUID().toString())
+				.orderQunatity(orderDTO.getOrderQunatity()).build()).getOrderId();
+	}
+
+}

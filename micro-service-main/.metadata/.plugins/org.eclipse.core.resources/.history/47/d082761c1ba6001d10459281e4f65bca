@@ -1,0 +1,9 @@
+package com.te.productservice.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.te.productservice.entity.Product;
+
+public interface ProductRepository extends JpaRepository<Product, String>{
+
+}

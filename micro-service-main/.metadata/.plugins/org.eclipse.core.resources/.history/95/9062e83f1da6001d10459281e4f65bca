@@ -1,0 +1,26 @@
+package com.te.productservice.service;
+
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import com.te.feignclient.dto.ProductDTO;
+import com.te.productservice.entity.Product;
+import com.te.productservice.repository.ProductRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class ProductServiceImpl implements ProductService {
+
+	private final ProductRepository productRepository;
+
+	@Override
+	public String saveProduct(ProductDTO productDTO) {
+		return productRepository.save(Product.builder().productId(UUID.randomUUID().toString())
+				.productName(productDTO.getProductName()).productPrice(productDTO.getProductPrice())
+				.productQuantity(productDTO.getProductQuantity()).build()).getProductId();
+	}
+
+}

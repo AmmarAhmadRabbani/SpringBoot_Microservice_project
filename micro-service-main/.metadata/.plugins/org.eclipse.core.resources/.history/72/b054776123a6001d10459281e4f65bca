@@ -1,0 +1,5 @@
+package com.te.orderservice.controller;
+
+public class OrderController {
+
+}

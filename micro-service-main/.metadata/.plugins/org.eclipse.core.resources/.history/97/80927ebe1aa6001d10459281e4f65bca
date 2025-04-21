@@ -1,0 +1,5 @@
+package com.te.productservice.service;
+
+public interface ProductService {
+
+}

@@ -1,0 +1,5 @@
+package com.te.feignclient.response;
+
+public class SuccessResponse {
+
+}
